@@ -11,20 +11,61 @@
     crossorigin="anonymous">
     </script>
     <script>
+        var recent = [];
+        var upcoming = [
+            {
+                date: new Date('2026-04-11'),
+                url: "pages/upcoming/secretgarden.html"
+            }
+        ];
+        for(var i = upcoming.length - 1; i > -1; i --) {
+            if(new Date() > upcoming[i].date) {
+                upcoming.splice(i, 1);
+            }
+        }
+        for(var i = recent.length - 1; i > -1; i --) {
+            if(recent[i].hasOwnProperty('date') && new Date() > recent[i].date) {
+                recent.splice(i, 1);
+            }
+        }
+        
         $(function(){
-            $("header").load("pages/header.html"); 
+            $("header").load("pages/header.html", () => {
+                $("#index_header_link").addClass("selected");
+            });
+            $("#about").load("pages/aboutme.html"); 
             $("footer").load("pages/footer.html"); 
-        });
+            if(recent.length > 0) {
+                $("#temporary").append("<h2>Recent Projects</h2>")
+                for(var i = 0; i < recent.length; i ++) {
+                    var newDiv = $("<div class='temporary'></div>");
+                    newDiv.load(recent[i].url)
+                    $("#temporary").append(newDiv);
+                }
+            }
+            if(upcoming.length > 0) {
+                $("#temporary").append("<h2>Upcoming Projects</h2>")
+                for(var i = 0; i < upcoming.length; i ++) {
+                    var newDiv = $("<div class='temporary'></div>");
+                    newDiv.load(upcoming[i].url)
+                    $("#temporary").append(newDiv);
+                }
+            }
+            if(upcoming.length == 0 && recent.length == 0) {
+                $("#temporary").remove();
+            }
+        }); 
     </script>
 </head>
 <body>
     <header></header>
-    <div id="main">
+    <div class="banner" id="main" style="background-image:url('resources/images/Far Away-5516.JPG');">
         <h1>Micah Stotesbery</h1>
-        <h2>Actor | Singer</h2>
+        <h2 style="font-family: Lexend;">Actor | Singer</h2>
     </div>
-    <div id="temporary"></div>
-    <div id="about"></div>
+    <div class="content divider" id="temporary">
+    </div>
+    <div class="content" id="about"></div>
     <footer></footer>
 </body>
 </html>
