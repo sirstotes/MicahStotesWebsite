@@ -11,19 +11,114 @@
     crossorigin="anonymous">
     </script>
     <script>
+        let currentImg = 0;
+        function showDisplay() {
+            $(".image_display").show();
+        }
+        function hideDisplay() {
+            $(".image_display").hide();
+        }
+        function nextImage() {
+            currentImg ++;
+            if(currentImg >= photos.length) {
+                currentImg = 0;
+            }
+            updateDisplay();
+        }
+        function prevImage() {
+            currentImg --;
+            if(currentImg < 0) {
+                currentImg = photos.length - 1;
+            }
+            updateDisplay();
+        }
+        function updateDisplay() {
+            $("#image_display_img").attr("src", photos[currentImg].url);
+            $("#image_display_caption").html(photos[currentImg].caption);
+        }
+        function showImage(num) {
+            currentImg = num;
+            updateDisplay();
+            showDisplay();
+        }
+        let photos = [
+            {
+                url: "resources/images/Far Away-5343.JPG",
+                year: 2025,
+                caption: "Todd - Far Away by Caryl Churchill - UVU Platform Series - Nov 2025"
+            },
+            {
+                url: "resources/images/Far Away-5493.JPG",
+                year: 2025,
+                caption: "Todd - Far Away by Caryl Churchill - UVU Platform Series - Nov 2025"
+            },
+            {
+                url: "resources/images/Far Away-5516.JPG",
+                year: 2025,
+                caption: "Todd - Far Away by Caryl Churchill - UVU Platform Series - Nov 2025"
+            },
+            {
+                url: "resources/images/Far Away-5617.JPG",
+                year: 2025,
+                caption: "Todd - Far Away by Caryl Churchill - UVU Platform Series - Nov 2025"
+            },
+            {
+                url: "resources/images/Far Away-5680.JPG",
+                year: 2025,
+                caption: "Todd - Far Away by Caryl Churchill - UVU Platform Series - Nov 2025"
+            }
+        ];
         $(function(){
             $("header").load("pages/header.html", () => {
                 $("#gallery_header_link").addClass("selected");
             }); 
             $("footer").load("pages/footer.html"); 
+            for(let i = 0; i < photos.length; i ++) {
+                let newImg = $("<img src='"+photos[i].url+"'>");
+                newImg.on("click", function(event) {
+                    event.stopPropagation();
+                    showImage(i);
+                });
+                $(".gallery").append(newImg);
+            }
+        });
+        $(document).on('click', function(event) {
+            if (!$(event.target).closest('.image_display').length && $('.image_display').is(':visible')) {
+                $('.image_display').hide();
+                console.log("Hide!");
+            }
         });
     </script>
 </head>
 <body>
     <header></header>
-    <div class="content" id="main">
+    <div class="banner" style="background-image:url('resources/images/Far Away-5516.JPG');">
         <h1>Gallery</h1>
     </div>
+    <div class="content highlight">
+        <h2>Reels</h2>
+    </div>
+    <div class="content">
+        <h2 style="margin-bottom:0;">Production Photos</h2>
+        <p style="margin-top:0;">(click to view full image)</p>
+        <div class="gallery"></div>
+    </div>
     <footer></footer>
+    <div hidden class="image_display">
+        <div id="image_display_gallery">
+            <div id="image_display_container">
+                <img id="image_display_img">
+            </div>
+            <p style="display:flex;flex-direction:row;gap:1em;">
+                <span>·</span>
+                <span onclick="prevImage();" style="cursor:pointer;user-select: none;">Prev</span>
+                <span>·</span>
+                <span id="image_display_caption" style="flex-grow:1;">Caption</span>
+                <span>·</span>
+                <span onclick="nextImage();" style="cursor:pointer;user-select: none;">Next</span>
+                <span>·</span>
+            </p>
+        </div>
+    </div>
 </body>
 </html>
