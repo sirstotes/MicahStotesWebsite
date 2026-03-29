@@ -12,7 +12,7 @@ a {
     color: var(--accent-2)
 }
 h1, h2 {
-    font-family: "Tilt Warp";
+    font-family: "Tilt Warp", sans-serif;
     /* text-transform: uppercase; */
     font-weight: 400;
 }
@@ -109,15 +109,30 @@ header ul li a:hover {
     flex-grow:1;
 }
 .gallery {
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1em;
+    display:grid;
+    grid-template-columns: auto auto auto auto;
+    width:100%;
 }
-.gallery img {
-    height: 20em;
+.gallery div {
+    overflow: hidden;
+    aspect-ratio: 1;
     cursor: pointer;
     box-shadow: 0 1em 2em rgba(0, 0, 0, 0.2);
+    background-position: center;
+    background-size: cover;
+}
+.gallery_divider {
+    width:100%;
+    text-align: center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+.gallery_divider div {
+    flex-grow:1;
+    background-color: var(--accent-2);
+    height:0.5em;
 }
 .thumbnail {
     overflow: hidden;
@@ -172,7 +187,7 @@ footer a {
     width: 100%;
 }
 .side_image_container {
-    border-radius:50%;
+    border-radius:2em;
     aspect-ratio: 1;
     overflow: hidden;
     width: 50%;
@@ -185,6 +200,16 @@ footer a {
     object-fit: cover;
     object-position: center;
     width: 100%;
+}
+button {
+    background-color: var(--accent-2);
+    color: var(--white);
+    padding: 1em;
+    border: none;
+    border-radius: 25%;
+    font-family: "Tilt Warp", sans-serif;
+    /* text-transform: uppercase; */
+    font-weight: 400;
 }
 @media (orientation: landscape)  {
     header {
@@ -210,5 +235,8 @@ footer a {
 @media (orientation: portrait)  {
     .flex_display {
         flex-direction: column;
+    }
+    .gallery {
+        grid-template-columns: auto auto auto;
     }
 }
