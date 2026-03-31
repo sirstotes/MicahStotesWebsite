@@ -11,7 +11,30 @@
     crossorigin="anonymous">
     </script>
     <script>
+        let currentPhotos;
         let currentImg = 0;
+        function loadGallery(photos, id) {//TODO: I think there's a bug where it cuts off a photo when splitting by year.
+            let year = photos[0].year;
+            let gallery = $("<div class='gallery'></div>");
+            for(let i = 0; i < photos.length; i ++) {
+                let newImg = $("<div style='background-image:url(\""+photos[i].url+"\");'></div>");
+                newImg.on("click", function(event) {
+                    event.stopPropagation();
+                    showImage(photos, i);
+                });
+                if(photos[i].year == year) {
+                    gallery.append(newImg);
+                } else {
+                    $(id).append("<div class='gallery_divider'><div></div><h3>"+year+"</h3><div></div></div>");
+                    $(id).append(gallery);
+                    year = photos[i].year;
+                    gallery = $("<div class='gallery'></div>");
+                }
+            }
+            $(id).append("<div class='gallery_divider'><div></div><h3>"+year+"</h3><div></div></div>");
+            $(id).append(gallery);
+            gallery = $("<div class='gallery'></div>");
+        }
         function showDisplay() {
             $(".image_display").show();
         }
@@ -20,7 +43,7 @@
         }
         function nextImage() {
             currentImg ++;
-            if(currentImg >= photos.length) {
+            if(currentImg >= currentPhotos.length) {
                 currentImg = 0;
             }
             updateDisplay();
@@ -28,139 +51,112 @@
         function prevImage() {
             currentImg --;
             if(currentImg < 0) {
-                currentImg = photos.length - 1;
+                currentImg = currentPhotos.length - 1;
             }
             updateDisplay();
         }
         function updateDisplay() {
-            $("#image_display_img").attr("src", photos[currentImg].url);
-            $("#image_display_caption").html(photos[currentImg].caption);
+            $("#image_display_img").attr("src", currentPhotos[currentImg].url);
+            $("#image_display_caption").html(currentPhotos[currentImg].caption);
         }
-        function showImage(num) {
+        function showImage(photos, num) {
+            currentPhotos = photos;
             currentImg = num;
             updateDisplay();
             showDisplay();
         }
-        let photos = [
+        let btsPhotos = [
             {
-                url: "resources/images/The Idiot-2.jpg",
+                url: "resources/images/Behind The Scenes/Repeat Shadows-1.jpg",
                 year: 2026,
-                caption: "Gabe - The Idiot - Short Film by Vestibular Productions - March 2026"
+                caption: "Brendan - \"Repeat Shadows\" - Horror Short directed by Patrick Kastner - Jan 2026"
             },
             {
-                url: "resources/images/The Idiot-1.jpg",
+                url: "resources/images/Behind The Scenes/Repeat Shadows-2.jpg",
                 year: 2026,
-                caption: "Gabe - The Idiot - Short Film by Vestibular Productions - March 2026"
+                caption: "Brendan - \"Repeat Shadows\" - Horror Short directed by Patrick Kastner - Jan 2026"
             },
             {
-                url: "resources/images/Repeat Shadows-1.jpg",
+                url: "resources/images/Behind The Scenes/The Idiot-1.jpg",
                 year: 2026,
-                caption: "Brendan - Repeat Shadows - Horror Short directed by Patrick Kastner - Jan 2026"
+                caption: "Gabe - \"The Idiot\" - Short Film by Vestibular Productions - March 2026"
             },
             {
-                url: "resources/images/Repeat Shadows-2.jpg",
+                url: "resources/images/Behind The Scenes/The Idiot-2.jpg",
                 year: 2026,
-                caption: "Brendan - Repeat Shadows - Horror Short directed by Patrick Kastner - Jan 2026"
-            },
+                caption: "Gabe - \"The Idiot\" - Short Film by Vestibular Productions - March 2026"
+            }
+        ];
+        let productionPhotos = [
             {
-                url: "resources/images/Far Away-1.jpeg",
+                url: "resources/images/Production Photos/Little Women-1.jpg",
                 year: 2025,
-                caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series - Nov 2025"
+                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
             },
             {
-                url: "resources/images/Far Away-2.jpeg",
+                url: "resources/images/Production Photos/Little Women-2.jpg",
                 year: 2025,
-                caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series - Nov 2025"
+                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
             },
             {
-                url: "resources/images/Far Away-3.jpeg",
+                url: "resources/images/Production Photos/Little Women-3.jpg",
                 year: 2025,
-                caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series - Nov 2025"
+                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
             },
             {
-                url: "resources/images/Far Away-4.jpeg",
+                url: "resources/images/Production Photos/Little Women-4.jpg",
                 year: 2025,
-                caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series - Nov 2025"
+                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
             },
             {
-                url: "resources/images/Far Away-5343.JPG",
+                url: "resources/images/Production Photos/Little Women-5.jpg",
                 year: 2025,
-                caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series - Nov 2025"
+                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
             },
             {
-                url: "resources/images/Far Away-5493.JPG",
+                url: "resources/images/Production Photos/Little Women-6.jpg",
                 year: 2025,
-                caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series - Nov 2025"
+                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
             },
             {
-                url: "resources/images/Far Away-5516.JPG",
+                url: "resources/images/Production Photos/Little Women-7.jpg",
                 year: 2025,
-                caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series - Nov 2025"
+                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
             },
             {
-                url: "resources/images/Far Away-5617.JPG",
+                url: "resources/images/Production Photos/Little Women-8.jpg",
                 year: 2025,
-                caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series - Nov 2025"
+                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
             },
             {
-                url: "resources/images/Far Away-5680.JPG",
-                year: 2025,
-                caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series - Nov 2025"
-            },
-            {
-                url: "resources/images/Svetlana-1.jpg",
+                url: "resources/images/Production Photos/Svetlana-1.jpg",
                 year: 2025,
                 caption: "<i>Svetlana</i> - Wasatch Theatre Company - June 2025<br>An original musical performed in the Eccles Black Box Theatre"
             },
             {
-                url: "resources/images/Little Women-2-edit.JPG",
+                url: "resources/images/Production Photos/Far Away-1.jpg",
                 year: 2025,
-                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
+                caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series - Nov 2025"
             },
             {
-                url: "resources/images/Little Women-509.JPG",
+                url: "resources/images/Production Photos/Far Away-2.jpg",
                 year: 2025,
-                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
+                caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series - Nov 2025"
             },
             {
-                url: "resources/images/Little Women-519.JPG",
+                url: "resources/images/Production Photos/Far Away-3.jpg",
                 year: 2025,
-                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
+                caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series - Nov 2025"
             },
             {
-                url: "resources/images/Little Women-520.JPG",
+                url: "resources/images/Production Photos/Far Away-4.jpg",
                 year: 2025,
-                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
+                caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series - Nov 2025"
             },
             {
-                url: "resources/images/Little Women-522.JPG",
+                url: "resources/images/Production Photos/Far Away-5.jpg",
                 year: 2025,
-                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
-            },
-            {
-                url: "resources/images/Little Women-523.JPG",
-                year: 2025,
-                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
-            },
-            {
-                url: "resources/images/Little Women-524.JPG",
-                year: 2025,
-                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
-            },
-            {
-                url: "resources/images/Little Women-587.JPG",
-                year: 2025,
-                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
-            },
-            {
-                url: "resources/images/Little Women-593.JPG",
-                year: 2025,
-                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
-            },
-            {
-                url: "resources/images/Little Women-598.JPG",
-                year: 2025,
-                caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University - April 2025"
+                caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series - Nov 2025"
             }
         ];
         $(function(){
@@ -168,26 +164,8 @@
                 $("#gallery_header_link").addClass("selected");
             }); 
             $("footer").load("pages/footer.html");
-            let year = photos[0].year;
-            let gallery = $("<div class='gallery'></div>");
-            for(let i = 0; i < photos.length; i ++) {
-                let newImg = $("<div style='background-image:url(\""+photos[i].url+"\");'></div>");
-                newImg.on("click", function(event) {
-                    event.stopPropagation();
-                    showImage(i);
-                });
-                if(photos[i].year == year) {
-                    gallery.append(newImg);
-                } else {
-                    $("#gallery_container").append("<div class='gallery_divider'><div></div><h3>"+year+"</h3><div></div></div>");
-                    $("#gallery_container").append(gallery);
-                    year = photos[i].year;
-                    gallery = $("<div class='gallery'></div>");
-                }
-            }
-            $("#gallery_container").append("<div class='gallery_divider'><div></div><h3>"+year+"</h3><div></div></div>");
-            $("#gallery_container").append(gallery);
-            gallery = $("<div class='gallery'></div>");
+            loadGallery(productionPhotos, "#production_photos");
+            loadGallery(btsPhotos, "#bts_photos");
         });
         $(document).on('click', function(event) {
             if (!$(event.target).closest('.image_display').length && $('.image_display').is(':visible')) {
@@ -199,16 +177,22 @@
 </head>
 <body>
     <header></header>
-    <div class="banner" style="background-image:url('resources/images/Far Away-5493.JPG');background-position:center 25%;">
+    <div class="banner" style="background-image:url('resources/images/Production Photos/Far Away-5.jpg');background-position:center 25%;">
         <h1>Gallery</h1>
     </div>
     <div class="content highlight">
         <h2>Reels</h2>
     </div>
     <div class="content">
-        <h2 style="margin-bottom:0;">Production Photos & Behind the Scenes</h2>
+        <h2 style="margin-bottom:0;">Production Photos</h2>
         <p style="margin-top:0;">(click to view full image)</p>
-        <div id="gallery_container"></div>
+        <div id="production_photos"></div>
+    </div>
+    <div class="divider"></div>
+    <div class="content">
+        <h2 style="margin-bottom:0;">Behind The Scenes</h2>
+        <p style="margin-top:0;">(click to view full image)</p>
+        <div id="bts_photos"></div>
     </div>
     <footer></footer>
     <div hidden class="image_display">
