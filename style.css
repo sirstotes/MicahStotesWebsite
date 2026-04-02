@@ -3,10 +3,10 @@
 :root {
   --white: #fef5ef;
   --black: #08090a;
-  --accent-1: #ae435f;
+  --accent-1: #068D9D;
   --accent-2: #324684;
-  --accent-3: #368f8b;
-  --image-display: #324684aa;
+  --accent-3: #e83151;
+  --image-display: #08090aaa;
 }
 a {
     color: var(--accent-2)

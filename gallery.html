@@ -13,7 +13,7 @@
     <script>
         let currentPhotos;
         let currentImg = 0;
-        function loadGallery(photos, id) {//TODO: I think there's a bug where it cuts off a photo when splitting by year.
+        function loadGallery(photos, id) {
             let year = photos[0].year;
             let gallery = $("<div class='gallery'></div>");
             for(let i = 0; i < photos.length; i ++) {
@@ -22,14 +22,13 @@
                     event.stopPropagation();
                     showImage(photos, i);
                 });
-                if(photos[i].year == year) {
-                    gallery.append(newImg);
-                } else {
+                if(photos[i].year != year) {
                     $(id).append("<div class='gallery_divider'><div></div><h3>"+year+"</h3><div></div></div>");
                     $(id).append(gallery);
                     year = photos[i].year;
                     gallery = $("<div class='gallery'></div>");
                 }
+                gallery.append(newImg);
             }
             $(id).append("<div class='gallery_divider'><div></div><h3>"+year+"</h3><div></div></div>");
             $(id).append(gallery);
@@ -157,6 +156,26 @@
                 url: "resources/images/Production Photos/Far Away-5.jpg",
                 year: 2025,
                 caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series - Nov 2025"
+            },
+            {
+                url: "resources/images/Production Photos/Lady M SLC Fringe-1.jpg",
+                year: 2024,
+                caption: "Young Macbeth- <i>Lady M</i> - Salt Lake Fringe Festival - July 2024<br>A devised version of Shakespeare's <i>Macbeth</i> told from the perspective of Lady Macbeth using language from various Shakespearean plays."
+            },
+            {
+                url: "resources/images/Production Photos/Lady M SLC Fringe-2.jpg",
+                year: 2024,
+                caption: "Young Macbeth- <i>Lady M</i> - Salt Lake Fringe Festival - July 2024<br>A devised version of Shakespeare's <i>Macbeth</i> told from the perspective of Lady Macbeth using language from various Shakespearean plays."
+            },
+            {
+                url: "resources/images/Production Photos/Lady M SLC Fringe-3.jpg",
+                year: 2024,
+                caption: "Young Macbeth- <i>Lady M</i> - Salt Lake Fringe Festival - July 2024<br>A devised version of Shakespeare's <i>Macbeth</i> told from the perspective of Lady Macbeth using language from various Shakespearean plays."
+            },
+            {
+                url: "resources/images/Production Photos/Lady M SLC Fringe-4.jpg",
+                year: 2024,
+                caption: "Young Macbeth- <i>Lady M</i> - Salt Lake Fringe Festival - July 2024<br>A devised version of Shakespeare's <i>Macbeth</i> told from the perspective of Lady Macbeth using language from various Shakespearean plays."
             }
         ];
         $(function(){
