@@ -17,7 +17,7 @@
             let year = photos[0].year;
             let gallery = $("<div class='gallery'></div>");
             for(let i = 0; i < photos.length; i ++) {
-                let newImg = $("<div style='background-image:url(\""+photos[i].url+"\");'></div>");
+                let newImg = $("<div style='background-image:url(\""+photos[i].thumbnail+"\");'></div>");
                 newImg.on("click", function(event) {
                     event.stopPropagation();
                     showImage(photos, i);
@@ -67,21 +67,37 @@
         let btsPhotos = [
             {
                 url: "resources/images/Behind The Scenes/Repeat Shadows-1.jpg",
+                thumbnail: "resources/images/Thumbnails/Repeat Shadows-1.jpg",
                 year: 2026,
                 caption: "Brendan - \"Repeat Shadows\" - Horror Short directed by Patrick Kastner"
             },
             {
                 url: "resources/images/Behind The Scenes/Repeat Shadows-2.jpg",
+                thumbnail: "resources/images/Thumbnails/Repeat Shadows-2.jpg",
+                year: 2026,
+                caption: "Brendan - \"Repeat Shadows\" - Horror Short directed by Patrick Kastner"
+            },
+            {
+                url: "resources/images/Behind The Scenes/Repeat Shadows-3.jpg",
+                thumbnail: "resources/images/Thumbnails/Repeat Shadows-3.jpg",
+                year: 2026,
+                caption: "Brendan - \"Repeat Shadows\" - Horror Short directed by Patrick Kastner"
+            },
+            {
+                url: "resources/images/Behind The Scenes/Repeat Shadows-4.jpg",
+                thumbnail: "resources/images/Thumbnails/Repeat Shadows-4.jpg",
                 year: 2026,
                 caption: "Brendan - \"Repeat Shadows\" - Horror Short directed by Patrick Kastner"
             },
             {
                 url: "resources/images/Behind The Scenes/The Idiot-1.jpg",
+                thumbnail: "resources/images/Thumbnails/The Idiot-1.jpg",
                 year: 2026,
                 caption: "Gabe - \"The Idiot\" - Short Film by Vestibular Productions"
             },
             {
                 url: "resources/images/Behind The Scenes/The Idiot-2.jpg",
+                thumbnail: "resources/images/Thumbnails/The Idiot-2.jpg",
                 year: 2026,
                 caption: "Gabe - \"The Idiot\" - Short Film by Vestibular Productions"
             }
@@ -89,111 +105,133 @@
         let productionPhotos = [
             {
                 url: "resources/images/Production Photos/Little Women-1.jpg",
+                thumbnail: "resources/images/Thumbnails/Little Women-1.jpg",
                 year: 2025,
                 caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University"
             },
             {
                 url: "resources/images/Production Photos/Little Women-2.jpg",
+                thumbnail: "resources/images/Thumbnails/Little Women-2.jpg",
                 year: 2025,
                 caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University"
             },
             {
                 url: "resources/images/Production Photos/Little Women-3.jpg",
+                thumbnail: "resources/images/Thumbnails/Little Women-3.jpg",
                 year: 2025,
                 caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University"
             },
             {
                 url: "resources/images/Production Photos/Little Women-4.jpg",
+                thumbnail: "resources/images/Thumbnails/Little Women-4.jpg",
                 year: 2025,
                 caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University"
             },
             {
                 url: "resources/images/Production Photos/Little Women-5.jpg",
+                thumbnail: "resources/images/Thumbnails/Little Women-5.jpg",
                 year: 2025,
                 caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University"
             },
             {
                 url: "resources/images/Production Photos/Little Women-6.jpg",
+                thumbnail: "resources/images/Thumbnails/Little Women-6.jpg",
                 year: 2025,
                 caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University"
             },
             {
                 url: "resources/images/Production Photos/Little Women-7.jpg",
+                thumbnail: "resources/images/Thumbnails/Little Women-7.jpg",
                 year: 2025,
                 caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University"
             },
             {
                 url: "resources/images/Production Photos/Little Women-8.jpg",
+                thumbnail: "resources/images/Thumbnails/Little Women-8.jpg",
                 year: 2025,
                 caption: "Professor Bhaer - <i>Little Women</i> - Utah Valley University"
             },
             {
                 url: "resources/images/Production Photos/Svetlana-1.jpg",
+                thumbnail: "resources/images/Thumbnails/Svetlana-1.jpg",
                 year: 2025,
                 caption: "<i>Svetlana</i> - Wasatch Theatre Company<br>An original musical performed in the Eccles Black Box Theatre"
             },
             {
                 url: "resources/images/Production Photos/Far Away-1.jpg",
+                thumbnail: "resources/images/Thumbnails/Far Away-1.jpg",
                 year: 2025,
                 caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series"
             },
             {
                 url: "resources/images/Production Photos/Far Away-2.jpg",
+                thumbnail: "resources/images/Thumbnails/Far Away-2.jpg",
                 year: 2025,
                 caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series"
             },
             {
                 url: "resources/images/Production Photos/Far Away-3.jpg",
+                thumbnail: "resources/images/Thumbnails/Far Away-3.jpg",
                 year: 2025,
                 caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series"
             },
             {
                 url: "resources/images/Production Photos/Far Away-4.jpg",
+                thumbnail: "resources/images/Thumbnails/Far Away-4.jpg",
                 year: 2025,
                 caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series"
             },
             {
                 url: "resources/images/Production Photos/Far Away-5.jpg",
+                thumbnail: "resources/images/Thumbnails/Far Away-5.jpg",
                 year: 2025,
                 caption: "Todd - <i>Far Away</i> by Caryl Churchill - UVU Platform Series"
             },
             {
                 url: "resources/images/Production Photos/Lady M SLC Fringe-1.jpg",
+                thumbnail: "resources/images/Thumbnails/Lady M SLC Fringe-1.jpg",
                 year: "2023-2024",
                 caption: "Young Macbeth - <i>Lady M</i> - Salt Lake Fringe Festival <br>A devised version of Shakespeare's <i>Macbeth</i> told from the perspective of Lady Macbeth using language from various Shakespearean plays."
             },
             {
                 url: "resources/images/Production Photos/Lady M SLC Fringe-2.jpg",
+                thumbnail: "resources/images/Thumbnails/Lady M SLC Fringe-2.jpg",
                 year: "2023-2024",
                 caption: "Young Macbeth - <i>Lady M</i> - Salt Lake Fringe Festival <br>A devised version of Shakespeare's <i>Macbeth</i> told from the perspective of Lady Macbeth using language from various Shakespearean plays."
             },
             {
                 url: "resources/images/Production Photos/Lady M SLC Fringe-3.jpg",
+                thumbnail: "resources/images/Thumbnails/Lady M SLC Fringe-3.jpg",
                 year: "2023-2024",
                 caption: "Young Macbeth - <i>Lady M</i> - Salt Lake Fringe Festival <br>A devised version of Shakespeare's <i>Macbeth</i> told from the perspective of Lady Macbeth using language from various Shakespearean plays."
             },
             {
                 url: "resources/images/Production Photos/Lady M SLC Fringe-4.jpg",
+                thumbnail: "resources/images/Thumbnails/Lady M SLC Fringe-4.jpg",
                 year: "2023-2024",
                 caption: "Young Macbeth - <i>Lady M</i> - Salt Lake Fringe Festival <br>A devised version of Shakespeare's <i>Macbeth</i> told from the perspective of Lady Macbeth using language from various Shakespearean plays."
             },
             {
                 url: "resources/images/Production Photos/ladyM-1.jpg",
+                thumbnail: "resources/images/Thumbnails/ladyM-1.jpg",
                 year: "2023-2024",
                 caption: "Young Macbeth - <i>Lady M</i> - Utah Valley University <br>A devised version of Shakespeare's <i>Macbeth</i> told from the perspective of Lady Macbeth using language from various Shakespearean plays."
             },
             {
                 url: "resources/images/Production Photos/ladyM-2.jpg",
+                thumbnail: "resources/images/Thumbnails/ladyM-2.jpg",
                 year: "2023-2024",
                 caption: "Young Macbeth - <i>Lady M</i> - Utah Valley University <br>A devised version of Shakespeare's <i>Macbeth</i> told from the perspective of Lady Macbeth using language from various Shakespearean plays."
             },
             {
                 url: "resources/images/Production Photos/ladyM-3.jpg",
+                thumbnail: "resources/images/Thumbnails/ladyM-3.jpg",
                 year: "2023-2024",
                 caption: "Young Macbeth - <i>Lady M</i> - Utah Valley University <br>A devised version of Shakespeare's <i>Macbeth</i> told from the perspective of Lady Macbeth using language from various Shakespearean plays."
             },
             {
                 url: "resources/images/Production Photos/ladyM-4.jpg",
+                thumbnail: "resources/images/Thumbnails/ladyM-4.jpg",
                 year: "2023-2024",
                 caption: "Young Macbeth - <i>Lady M</i> - Utah Valley University <br>A devised version of Shakespeare's <i>Macbeth</i> told from the perspective of Lady Macbeth using language from various Shakespearean plays."
             }
