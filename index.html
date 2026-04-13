@@ -11,13 +11,12 @@
     crossorigin="anonymous">
     </script>
     <script>
-        var recent = [];
-        var upcoming = [
+        var recent = [
             {
-                date: new Date('2026-04-11'),
-                url: "pages/upcoming/secretgarden.html"
-            }
-        ];
+                date: new Date('2026-06-01'),
+                url: "pages/recent/mfm.html"
+            }];
+        var upcoming = [];
         for(var i = upcoming.length - 1; i > -1; i --) {
             if(new Date() > upcoming[i].date) {
                 upcoming.splice(i, 1);
