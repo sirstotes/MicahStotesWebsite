@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>Home | Micah Stotesbery</title>
+    <title>Home · Micah Stotesbery</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <script
@@ -11,14 +11,15 @@
     crossorigin="anonymous">
     </script>
     <script>
-        var recent = [
+        var recent = [];
+        var upcoming = [
             {
-                date: new Date('2026-06-01'),
-                url: "pages/recent/mfm.html"
-            }];
-        var upcoming = [];
+                date: new Date('2026-07-17'),
+                url: "pages/upcoming/playfest.html"
+            }
+        ];
         for(var i = upcoming.length - 1; i > -1; i --) {
-            if(new Date() > upcoming[i].date) {
+            if(new Date() <= upcoming[i].date) {
                 upcoming.splice(i, 1);
             }
         }
@@ -60,7 +61,7 @@
     <header></header>
     <div class="banner" id="home_banner" style="background-image:url('resources/images/Production Photos/Little Women-6.jpg');background-position:center 38%;">
         <h1>Micah Stotesbery</h1>
-        <h2 style="font-family: Lexend;">Actor · Singer</h2>
+        <h2 style="font-family: Lexend;">Actor & Singer · Theatre & Film</h2>
     </div>
     <div class="content highlight" id="temporary">
     </div>

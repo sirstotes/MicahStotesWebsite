@@ -79,7 +79,7 @@ header ul li a:hover {
     padding:0.1em;
 }
 #temporary {
-    max-height:40em;
+    max-height:45em;
     overflow-y:scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;
